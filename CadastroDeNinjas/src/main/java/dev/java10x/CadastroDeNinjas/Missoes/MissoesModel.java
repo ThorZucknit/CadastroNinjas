@@ -14,7 +14,7 @@ import java.util.List;
 @Table (name = "tb_missoes")
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+
 public class MissoesModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +27,35 @@ public class MissoesModel {
     @JsonIgnore
     private List<NinjaModel> ninja;
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getDificuldade() {
+        return dificuldade;
+    }
+
+    public void setDificuldade(String dificuldade) {
+        this.dificuldade = dificuldade;
+    }
+
+    public List<NinjaModel> getNinja() {
+        return ninja;
+    }
+
+    public void setNinja(List<NinjaModel> ninja) {
+        this.ninja = ninja;
+    }
 }
