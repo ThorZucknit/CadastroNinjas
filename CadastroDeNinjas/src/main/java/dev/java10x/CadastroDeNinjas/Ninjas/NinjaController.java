@@ -33,7 +33,7 @@ public class NinjaController {
         }
 
     //MOSTRAR OS NINJAS POR ID (READ)
-     @GetMapping("listar/{id}")
+     @GetMapping("/listar/{id}")
      //Path varible faz parte do caminho /listar/1 --> url viro variavel
          public NinjaModel mostrarNinjaPorId(@PathVariable  Long id){
         return ninjaService.listarNinjasPorId(id);
