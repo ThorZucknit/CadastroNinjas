@@ -32,6 +32,7 @@
   <li><strong>H2 Database</strong> – Banco de dados em memória, ideal para testes</li>
   <li><strong>Flyway</strong> – Gerenciamento de versionamento/migração de banco de dados</li>
   <li><strong>Maven</strong> – Gerenciador de dependências e build</li>
+  <li><strong>Swagger</strong> – Documentação das requisições e controle da API-fonte</li>
   <li><strong>Git & GitHub</strong> – Controle e hospedagem do código-fonte</li>
   <li><strong>SQL</strong> – Criação e manipulação do banco de dados</li>
 </ul>
