@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
 @Table (name = "tb_missoes")
 @NoArgsConstructor
 @AllArgsConstructor
-
+@ToString
 public class MissoesModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

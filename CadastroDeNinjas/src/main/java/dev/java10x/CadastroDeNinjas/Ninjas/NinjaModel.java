@@ -4,6 +4,7 @@ import dev.java10x.CadastroDeNinjas.Missoes.MissoesModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 
 //Entity transforma uma classe em entidade do BD
@@ -11,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "tb_cadastro_de_ninjas")
 @AllArgsConstructor
 @NoArgsConstructor
-
+@ToString(exclude = "missoes")
 public class NinjaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

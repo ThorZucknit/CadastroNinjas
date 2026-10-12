@@ -1,0 +1,220 @@
+<!
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tabela de Ninjas</title>
+    <style>
+
+            /* ===== CONFIGURAÇÕES GERAIS ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 40px 5%;
+        }
+
+        /* ===== TÍTULO ===== */
+        h1 {
+            color: #f8fafc;
+            font-size: 32px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        h1::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #8b5cf6;
+            margin: 12px auto 0;
+            border-radius: 10px;
+        }
+
+        /* ===== CONTAINER DA TABELA ===== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #1e293b;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        /* ===== CABEÇALHO ===== */
+        thead {
+            background: #334155;
+        }
+
+        th {
+            padding: 18px 15px;
+            color: #c4b5fd;
+            text-align: left;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+            white-space: nowrap;
+        }
+
+        /* ===== CÉLULAS ===== */
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #334155;
+            font-size: 14px;
+            vertical-align: middle;
+        }
+
+        tbody tr {
+            transition: background 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background: #273449;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* ===== IMAGENS DOS NINJAS ===== */
+        td img {
+            width: 65px;
+            height: 65px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid #8b5cf6;
+            display: block;
+        }
+
+        /* ===== LINKS E BOTÕES ===== */
+        td:last-child {
+            white-space: nowrap;
+        }
+
+        td a {
+            display: inline-block;
+            text-decoration: none;
+            padding: 9px 12px;
+            margin: 3px 2px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        /* Deletar */
+        td a:first-child {
+            background: #7f1d1d;
+            color: #fecaca;
+            border: 1px solid #ef4444;
+        }
+
+        td a:first-child:hover {
+            background: #dc2626;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Alterar */
+        td a:nth-child(2) {
+            background: #4c1d95;
+            color: #ddd6fe;
+            border: 1px solid #8b5cf6;
+        }
+
+        td a:nth-child(2):hover {
+            background: #7c3aed;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Ver detalhes */
+        td a:nth-child(3) {
+            background: #164e63;
+            color: #a5f3fc;
+            border: 1px solid #06b6d4;
+        }
+
+        td a:nth-child(3):hover {
+            background: #0891b2;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ===== RESPONSIVIDADE ===== */
+        @media (max-width: 1000px) {
+            body {
+                padding: 25px 15px;
+            }
+
+            table {
+                min-width: 1000px;
+            }
+
+            body {
+                overflow-x: auto;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+    <h1>Lista de Ninjas</h1>
+    <table>
+
+        <thead>
+            <tr>
+                <th>Imagem</th>
+
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>Email</th>
+                <th>Missoes</th>
+                <th>Rank</th>
+            </tr>
+
+
+        </thead>
+
+        <tbody>
+            <tr th:each="ninja: ${ninjas}">
+                <td><img th:src="${ninja.imgUrl}" width="100" height="100"></td>
+                <td th:text="${ninja.id}"></td>
+                <td th:text="${ninja.nome}"></td>
+                <td th:text="${ninja.idade}"></td>
+                <td th:text="${ninja.email}"></td>
+                <td th:text="${ninja.rank}"></td>
+                <td>
+                   <span th:if="${ninja.missoes != null}">Missao:<span th:text="${ninja.missoes.nome}"></span>,
+                       Dificuldade: <span th:text="${ninja.missoes.dificuldade}"></span>
+                    </span>
+
+                    <span th:unless="${ninja.missoes != null}">Sem Missões</span>
+                </td>
+
+                <td>
+                    <a th:href="@{/ninjas/ui/deletar/{id}(id=${ninja.id})}">Deletar</a>
+
+                    <a th:href="@{/ninjas/ui/#/{id}(id=${ninja.id})}">Alterar</a>
+
+                    <a th:href="@{/ninjas/ui/#/{id}(id=${ninja.id})}">Ver detalhes</a>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
