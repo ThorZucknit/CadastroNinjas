@@ -9,7 +9,7 @@ import java.util.List;
 @RestController // informa ao Spring que a classe recebe requisições web e retorna dados na resposta
 @RequestMapping("/ninjas")
 public class NinjaController {
-    private NinjaService ninjaService;
+    private final NinjaService ninjaService;
 
     public NinjaController(NinjaService ninjaService) {
         this.ninjaService = ninjaService;
